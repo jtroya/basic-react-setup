@@ -3,17 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const port = process.env.PORT || 3000;
 
 module.exports = {
     entry: [
-        { main: './src/index.js' },
+        './src/index.js', 
         'react-hot-loader/patch'
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[hash].js'
     },
     devtool: 'inline-source-map',
     module: {
@@ -21,9 +23,7 @@ module.exports = {
           { 
               test: /\.js|jsx$/,
               exclude: /node_modules/,
-              use: {
-                  loader: "babel-loader"
-              }
+              use: ['babel-loader', 'eslint-loader']
           },
           {
               test: /\.scss$/,
@@ -45,7 +45,8 @@ module.exports = {
             filename: 'index.html'
         }),
         new WebpackMd5Hash(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new DashboardPlugin()
     ],
     devServer: {
         host: 'localhost',
