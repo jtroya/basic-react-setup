@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server --mode development --open",
-    "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "test": "jest",
     "test-watch": "jest --watch",
