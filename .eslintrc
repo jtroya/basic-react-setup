@@ -4,7 +4,7 @@
         "react"
     ],
     "rules": {
-        "no-console": ["warn", { allow: ["warn", "error"] }],
+        "no-console": ["warn", { allow: ["warn", "error", "info"] }],
         "no-underscore-dangle": [0],
 
         "react/no-deprecated": 2,

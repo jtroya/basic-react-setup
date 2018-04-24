@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 
 class App extends Component {
     render() {
         return (
             <div>
-                <p>Que pasa</p>
+                <p>Hola</p>
             </div>
         );
     }
